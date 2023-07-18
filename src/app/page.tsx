@@ -1,14 +1,8 @@
-import Image from 'next/image'
-import RootLayout from './layout'
-import Navbar from './Navbar'
+"use client";
+
+import Image from "next/image";
+import { useEffect, useState } from "react";
+
 export default function Home() {
-  return (
-    <div>
-      <RootLayout>
-        <div>
-        <Navbar/>
-        </div>
-      </RootLayout>
-    </div>
-  )
+  return <main>this is the page.tsx on base directory</main>;
 }

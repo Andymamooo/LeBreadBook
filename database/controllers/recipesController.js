@@ -1,21 +1,21 @@
-const Recipes = require('../models/recipes');
+const Recipes = require("../models/recipes");
 
-const getRecipes = async() => {
+const getRecipes = async () => {
   try {
-    console.log(`inside getrecipes!`)
+    console.log(`inside getrecipes!`);
     let allRecipes = await Recipes.find();
     console.log(`allRecipes is equal to ${allRecipes}`);
-  } catch(error) {
+    return allRecipes;
+  } catch (error) {
     console.error(error);
   }
-}
+};
 
-const updateRecipe = async(recipeId) => {
+const updateRecipe = async (recipeId) => {
   try {
-
-  } catch(error) {
+  } catch (error) {
     console.error(error);
   }
-}
+};
 
-module.exports = {getRecipes, updateRecipe}
+module.exports = { getRecipes, updateRecipe };
