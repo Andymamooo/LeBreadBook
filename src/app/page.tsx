@@ -4,5 +4,5 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  return <main>this is the page.tsx on base directory</main>;
+  return <main>Main Page</main>;
 }
