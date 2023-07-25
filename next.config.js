@@ -2,7 +2,7 @@
 const nextConfig = {
   env: {
     MONGODB_URI:
-      "mongodb+srv://<username>:<password>@cluster0.uxh26xm.mongodb.net/?retryWrites=true&w=majority",
+      "mongodb+srv://andyderkaema:nachos123@cluster0.uxh26xm.mongodb.net/?retryWrites=true&w=majority",
     URL: "http://localhost:3000",
   },
 };

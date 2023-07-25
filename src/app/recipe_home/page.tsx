@@ -16,7 +16,6 @@ async function getRecipes() {
       method: "GET",
     });
     const recipes = await response.json();
-    console.log(`recipes from fetch is equal to ${JSON.stringify(recipes)}`);
   } catch (error) {
     console.error(error);
     throw error;

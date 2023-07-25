@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "PEPE",
+  title: "LeBreadBook",
   description: "Designed by Toro",
 };
 
