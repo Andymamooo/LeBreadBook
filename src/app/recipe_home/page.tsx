@@ -12,12 +12,13 @@ type Recipes = {
 
 async function getRecipes() {
   try {
-    const response = await fetch("/api/recipes");
+    const response = await fetch(process.env.URL + "/api/recipes", {
+      method: "GET",
+    });
     const recipes = await response.json();
-    console.log(`recipes from fetch is equal to ${JSON.stringify(recipes)}`);
   } catch (error) {
-    console.log(`error is equal to ${error}`);
     console.error(error);
+    throw error;
   }
 }
 export default function Home() {

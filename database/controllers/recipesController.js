@@ -1,3 +1,5 @@
+// Only use this file if using local MongoDB
+
 const Recipes = require("../models/recipes");
 
 const getRecipes = async () => {
@@ -5,9 +7,10 @@ const getRecipes = async () => {
     console.log(`inside getrecipes!`);
     let allRecipes = await Recipes.find();
     console.log(`allRecipes is equal to ${allRecipes}`);
-    return allRecipes;
+    return res.json({ recipes: allRecipes, success: true });
   } catch (error) {
     console.error(error);
+    throw error;
   }
 };
 

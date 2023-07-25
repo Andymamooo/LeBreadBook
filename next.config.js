@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  env: {
+    MONGODB_URI:
+      "mongodb+srv://andyderkaema:nachos123@cluster0.uxh26xm.mongodb.net/?retryWrites=true&w=majority",
+    URL: "http://localhost:3000",
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
