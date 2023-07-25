@@ -1,22 +1,19 @@
-import type { NextFetchEvent } from "next/server";
-import { getRecipes } from "/Users/andyma/Desktop/Personal Projects/LeBreadBook/database/controllers/recipesController.js";
+import { NextResponse } from "next/server";
+import clientPromise from "../../../../database/index";
 
-export async function GET(Request) {
-  console.log(`get got called!`);
-  let recipes = await getRecipes();
-  console.log(`recipes in get is equal to ${JSON.stringify(recipes)}`);
-  return new Response(
-    JSON.stringify(recipes, {
-      status: 200,
-    })
-  );
+export async function GET(Request: any) {
+  try {
+    const client = await clientPromise;
+    const db = client.db("LeBreadBook");
+    let recipes = await db.collection("Recipes").find({}).toArray();
+    
+    console.log("recipes:", recipes);
+    return NextResponse.json({ recipes });
+  } catch (error) {
+    console.error(error);
+    return new Response(null, {
+      status: 500,
+      statusText: `Internal Server Error :  ${error}`,
+    });
+  }
 }
-
-// import { NextResponse } from 'next/server'
-
-// export async function GET() {
-//   console.log(`hello!!`)
-//   const res = 'hello'
-
-//   return NextResponse.json(res)
-// }
