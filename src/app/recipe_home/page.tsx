@@ -12,7 +12,7 @@ type Recipes = {
 
 async function getRecipes() {
   try {
-    const response = await fetch("/api/recipes");
+    const response = await fetch(process.env.URL + "/api/recipes");
     const recipes = await response.json();
     console.log(`recipes from fetch is equal to ${JSON.stringify(recipes)}`);
   } catch (error) {
