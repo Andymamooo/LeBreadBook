@@ -4,9 +4,9 @@ import clientPromise from "../../../../database/index";
 export async function GET(Request: any) {
   try {
     const client = await clientPromise;
-    const db = client.db("LeBreadBook");
-    let recipes = await db.collection("Recipes").find({}).toArray();
-    
+    const db = client.db("sample_recipes");
+    let recipes = await db.collection("recipes").find({}).toArray();
+
     console.log("recipes:", recipes);
     return NextResponse.json({ recipes });
   } catch (error) {
