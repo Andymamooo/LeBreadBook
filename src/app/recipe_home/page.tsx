@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 type Recipes = {
   _id: number;
@@ -8,9 +8,10 @@ type Recipes = {
 
 async function getRecipes() {
   try {
-    const response = await fetch(process.env.URL + '/api/recipes');
+    const response = await fetch(process.env.URL + "/api/recipes");
     const recipes = await response.json();
     console.log(`recipes from fetch is equal to ${JSON.stringify(recipes)}`);
+    return recipes;
   } catch (error) {
     console.log(`error is equal to ${error}`);
     console.error(error);
