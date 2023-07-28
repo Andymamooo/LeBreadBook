@@ -1,8 +1,12 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import RecipeList from './Recipe_List/page';
 
+// Recipe List View
 export default function Home() {
-  return <main>Main Page</main>;
+  return (
+    <main>
+      <RecipeList />
+    </main>
+  );
 }

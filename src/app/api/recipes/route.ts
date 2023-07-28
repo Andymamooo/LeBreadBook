@@ -7,7 +7,6 @@ export async function GET(Request: any) {
     const db = client.db("sample_recipes");
     let recipes = await db.collection("recipes").find({}).toArray();
 
-    console.log("recipes:", recipes);
     return NextResponse.json({ recipes });
   } catch (error) {
     console.error(error);
