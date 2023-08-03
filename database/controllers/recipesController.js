@@ -1,21 +1,31 @@
-const Recipes = require("../models/recipes");
+// const Recipes = require("../models/recipes");
+import clientPromise from "../index";
 
-const getRecipes = async () => {
+const getClient = async () => {
+  const client = await clientPromise;
+  return client.db("sample_recipes");
+};
+
+export const getRecipes = async () => {
   try {
-    console.log(`inside getrecipes!`);
-    let allRecipes = await Recipes.find();
-    console.log(`allRecipes is equal to ${allRecipes}`);
-    return allRecipes;
+    const db = await getClient();
+    let recipes = await db.collection("recipes").find({}).toArray();
+    return recipes;
   } catch (error) {
     console.error(error);
   }
 };
 
-const updateRecipe = async (recipeId) => {
+export const updateRecipe = async (recipeId) => {
   try {
   } catch (error) {
     console.error(error);
   }
 };
 
-module.exports = { getRecipes, updateRecipe };
+export const addRecipe = async (recipe) => {
+  try {
+  } catch (error) {
+    console.error(error);
+  }
+};

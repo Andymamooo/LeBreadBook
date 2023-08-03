@@ -1,12 +1,10 @@
 import { NextResponse } from "next/server";
 import clientPromise from "../../../../database/index";
+import { getRecipes } from "../../../../database/controllers/recipesController";
 
 export async function GET(Request: any) {
   try {
-    const client = await clientPromise;
-    const db = client.db("sample_recipes");
-    let recipes = await db.collection("recipes").find({}).toArray();
-
+    let recipes = await getRecipes();
     return NextResponse.json({ recipes });
   } catch (error) {
     console.error(error);
