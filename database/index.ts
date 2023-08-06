@@ -1,13 +1,13 @@
-import { MongoClient } from "mongodb";
+import { MongoClient, MongoClientOptions } from "mongodb";
 
-const uri = process.env.MONGODB_URI;
-const options = {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-};
+// non-null assertion operator tells TypeScript that even
+// though something looks like it could be null,
+// it can trust you that it's not
 
-let client;
-let clientPromise;
+const uri: string = process.env.MONGODB_URI!;
+
+let client: MongoClient;
+let clientPromise: Promise<MongoClient>;
 
 if (!process.env.MONGODB_URI) {
   throw new Error("Please add your Mongo URI to .env.local");
@@ -18,13 +18,13 @@ if (process.env.NODE_ENV === "development") {
   // is preserved across module reloads caused by HMR (Hot Module Replacement).
 
   if (!global._mongoClientPromise) {
-    client = new MongoClient(uri, options);
+    client = new MongoClient(uri);
     global._mongoClientPromise = client.connect();
   }
   clientPromise = global._mongoClientPromise;
 } else {
   // In production mode, it's best to not use a global variable.
-  client = new MongoClient(uri, options);
+  client = new MongoClient(uri);
   clientPromise = client.connect();
 }
 

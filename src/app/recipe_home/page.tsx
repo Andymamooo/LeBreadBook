@@ -1,20 +1,16 @@
 "use client";
 
-type Recipes = {
-  _id: number;
-  Title: string;
-  Ingredients: { [key: string]: any };
-};
+import { RecipesResponse } from "../../../interfaces/Recipe";
 
-async function getRecipes() {
+async function getRecipes(): Promise<RecipesResponse> {
   try {
     const response = await fetch(process.env.URL + "/api/recipes");
     const recipes = await response.json();
     console.log(`recipes from fetch is equal to ${JSON.stringify(recipes)}`);
     return recipes;
   } catch (error) {
-    console.log(`error is equal to ${error}`);
     console.error(error);
+    throw error;
   }
 }
 export default function Home() {
