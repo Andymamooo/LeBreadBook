@@ -1,9 +1,5 @@
 import { MongoClient, MongoClientOptions } from "mongodb";
 
-// non-null assertion operator tells TypeScript that even
-// though something looks like it could be null,
-// it can trust you that it's not
-
 const uri: string = process.env.MONGODB_URI!;
 
 let client: MongoClient;

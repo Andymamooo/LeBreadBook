@@ -1,7 +1,7 @@
 // const Recipes = require("../models/recipes");
 import clientPromise from "../index";
 import { Collection } from "mongodb";
-import { MongoRecipeResponse, Recipe } from "../../interfaces/Recipe";
+import { Recipe } from "../../interfaces/Recipe";
 import type { WithId, Document } from "mongodb";
 
 const getClient = async () => {
@@ -13,9 +13,6 @@ export const getRecipes = async (): Promise<WithId<Document>[]> => {
   try {
     const db = await getClient();
     let recipes = await db.collection("recipes").find({}).toArray();
-    console.log(
-      `recipes! in getRecipes is equal to ${JSON.stringify(recipes)}`
-    );
     return recipes;
   } catch (error) {
     console.error(error);
