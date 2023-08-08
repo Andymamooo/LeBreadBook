@@ -1,9 +1,8 @@
 import '@testing-library/jest-dom';
-import { render } from '@testing-library/react';
+import { act, render } from '@testing-library/react';
 import RecipeList from './RecipeList';
 
 describe('Recipe List', () => {
-  let fetch: any = undefined;
   const mockRecipes = {
     recipes: [
       { _id: 1, Title: 'Mock Bread 1' },
@@ -11,29 +10,20 @@ describe('Recipe List', () => {
     ],
   };
 
-  global.fetch = jest.fn(() =>
-    Promise.resolve({
-      json: () => Promise.resolve(mockRecipes),
-    })
-);
-
-  // beforeEach(() => {
-  //   global.fetch = jest.fn(() =>
-  //     Promise.resolve({
-  //       json: () => Promise.resolve(mockRecipes),
-  //     })
-  //   );
-  // });
+  beforeEach(() => {
+    global.fetch = jest.fn(() =>
+      Promise.resolve({
+        json: () => Promise.resolve(mockRecipes),
+      })
+    ) as jest.Mock;
+  });
 
   afterEach(() => {
     jest.restoreAllMocks();
   });
 
-  it('renders a Recipe List', () => {
-    // fetchMock.mockReturnValue(Promise.resolve(new Response(mockRecipes)));
-
-    render(<RecipeList />);
-    // expect(fetch).toHaveBeenCalledTimes(1);
-    console.log(fetch)
+  it('renders a Recipe List', async () => {
+    await act(async () => render(<RecipeList />));
+    expect(global.fetch).toHaveBeenCalledTimes(1);
   });
 });
