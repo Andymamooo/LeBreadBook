@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
+  const router = useRouter();
   const [loginData, setLogin] = useState({
     email: "",
     password: "",
@@ -17,7 +18,8 @@ export default function Login() {
 
   let handleLogin = (e) => {
     e.preventDefault();
-    redirect("/recipe_home");
+    console.log(`handling login!`);
+    router.push("/");
   };
 
   return (
