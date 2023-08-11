@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { redirect } from "next/navigation";
 
 export default function Login() {
   const [loginData, setLogin] = useState({
@@ -12,6 +13,11 @@ export default function Login() {
     e.preventDefault();
     console.log(e.target.name);
     setLogin({ ...loginData, [e.target.name]: e.target.value });
+  };
+
+  let handleLogin = (e) => {
+    e.preventDefault();
+    redirect("/recipe_home");
   };
 
   return (
@@ -41,7 +47,10 @@ export default function Login() {
             className='text-black bg-white w-full px-3 py-2 border border-gray-300 rounded w-64'
           />
         </div>
-        <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
+        <button
+          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+          onClick={handleLogin}
+        >
           Login
         </button>
         <button>Forgot password?</button>
