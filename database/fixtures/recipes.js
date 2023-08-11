@@ -1,5 +1,3 @@
-const Recipes = require("../models/recipes");
-
 const recipes = [
   {
     Title: "Spelt, Rye, and Whole Wheat Sourdough Bread",
@@ -31,11 +29,3 @@ const recipes = [
     },
   },
 ];
-
-Recipes.insertMany(recipes)
-  .then((result) => {
-    console.log(result);
-  })
-  .catch((err) => {
-    console.log(`error while inserting recipes : ${err}`);
-  });
