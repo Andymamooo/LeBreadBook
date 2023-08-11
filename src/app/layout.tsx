@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "PEPE",
+  title: "Le Breadbook",
   description: "Designed by Toro",
 };
 
@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <nav>MAIN NAVBAR</nav>
+        <nav>Le Breadbook</nav>
         {children}
       </body>
     </html>
