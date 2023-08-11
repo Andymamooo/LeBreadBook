@@ -1,6 +1,7 @@
 'use client';
 
 import { Fragment, useEffect, useState } from 'react';
+import { RecipesResponse } from "../../../interfaces/Recipe";
 
 type Recipe = {
   _id: number;
@@ -12,7 +13,7 @@ export default function RecipeList() {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  async function getRecipes() {
+  async function getRecipes(): Promise<void> {
     try {
       setIsLoading(true);
       const response = await (
