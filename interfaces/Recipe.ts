@@ -11,12 +11,6 @@ export interface Recipe {
   __v: number;
 }
 
-export interface MongoRecipeResponse extends WithId<Document> {
-  Title: string;
-  Ingredients: Ingredient[];
-  __v: number;
-}
-
 export interface RecipesResponse {
   recipes: Recipe[];
 }

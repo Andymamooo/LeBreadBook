@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from "react";
 import { RecipesResponse } from "../../../interfaces/Recipe";
 
 type Recipe = {
@@ -17,7 +17,7 @@ export default function RecipeList() {
     try {
       setIsLoading(true);
       const response = await (
-        await fetch(process.env.URL + '/api/recipes')
+        await fetch(process.env.URL + "/api/recipes")
       ).json();
       const { recipes } = response;
       setRecipes(recipes);
