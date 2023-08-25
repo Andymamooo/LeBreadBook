@@ -4,7 +4,7 @@ import { Collection } from "mongodb";
 import { Recipe } from "../../interfaces/Recipe";
 import type { WithId, Document } from "mongodb";
 
-const getClient = async () => {
+export const getClient = async () => {
   const client = await clientPromise;
   return client.db("sample_recipes");
 };
