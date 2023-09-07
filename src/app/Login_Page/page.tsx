@@ -22,6 +22,11 @@ export default function Login() {
     router.push("/");
   };
 
+  let handleRegister = (e) => {
+    e.preventDefault();
+    router.push("/Register_Page");
+  };
+
   return (
     <div className='flex justify-center items-center h-screen mb-4'>
       <form className='flex flex-col space-y-4'>
@@ -34,7 +39,7 @@ export default function Login() {
             value={loginData.email}
             onChange={onLoginChange}
             style={{ color: "black", background: "white" }}
-            className='text-black bg-white w-full px-3 py-2 border border-gray-300 rounded w-64'
+            className='text-black bg-white w-full px-3 py-2 border border-gray-300 rounded'
           />
         </div>
         <div className='flex flex-col space-y-1 '>
@@ -46,7 +51,7 @@ export default function Login() {
             value={loginData.password}
             onChange={onLoginChange}
             style={{ color: "black", background: "white" }}
-            className='text-black bg-white w-full px-3 py-2 border border-gray-300 rounded w-64'
+            className='text-black bg-white w-full px-3 py-2 border border-gray-300 rounded'
           />
         </div>
         <button
@@ -56,7 +61,7 @@ export default function Login() {
           Login
         </button>
         <button>Forgot password?</button>
-        <button>Don't have an account?</button>
+        <button onClick={handleRegister}>Don't have an account?</button>
       </form>
     </div>
   );
