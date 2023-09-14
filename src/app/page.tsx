@@ -12,9 +12,14 @@ export default function Home() {
 
   return (
     <main>
-      Main Page
-      <RecipeList />
-      <RecipeCard />
+      <div
+        className='max-w-xs bg-white border rounded-md shadow-lg dark:bg-gray-800 dark:border-gray-700'
+        role='alert'
+      >
+        <div className='columns-1 items-center'>
+          <RecipeList />
+        </div>
+      </div>
     </main>
   );
 }
