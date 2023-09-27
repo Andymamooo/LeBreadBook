@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import RecipeList from './Recipe_List/RecipeList';
+import RecipeList from "./Recipe_List/RecipeList";
 
 // Recipe List View
 export default function Home() {
