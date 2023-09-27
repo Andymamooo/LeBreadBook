@@ -2,8 +2,16 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function Register() {
+  const router = useRouter();
+
+  let handleLogin = (e) => {
+    e.preventDefault();
+    router.push("/Login_Page");
+  };
+
   return (
     <div className='bg-gray-50 dark:bg-gray-900'>
       <div className='flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0'>
@@ -72,6 +80,7 @@ export default function Register() {
                 <a
                   href='#'
                   className='font-medium text-primary-600 hover:underline dark:text-primary-500'
+                  onClick={handleLogin}
                 >
                   Login here
                 </a>
