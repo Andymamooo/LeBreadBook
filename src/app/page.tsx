@@ -1,13 +1,12 @@
 'use client';
 
-import RecipeList from './Recipe_List/RecipeList';
+import { useEffect } from 'react';
 
 // Recipe List View
 export default function Home() {
-  return (
-    <main>
-      Main Page
-      <RecipeList />
-    </main>
-  );
+  useEffect(() => {
+    import('preline');
+  }, []);
+
+  return <main></main>;
 }
