@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 // Recipe List View
 export default function Home() {
   useEffect(() => {
-    import('preline');
+    import("preline");
   }, []);
 
   return <main></main>;
