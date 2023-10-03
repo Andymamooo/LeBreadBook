@@ -17,7 +17,7 @@ export default function Register() {
       <div className='flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0'>
         <a
           href='#'
-          class='flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white'
+          className='flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white'
         >
           <Image
             className='w-8 h-8 mr-2'
@@ -33,6 +33,30 @@ export default function Register() {
               Create a account
             </h1>
             <form className='space-y-4 md:space-y-6' action='#'>
+              <div>
+                <label className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
+                  First name
+                </label>
+                <input
+                  type='fname'
+                  name='fname'
+                  id='fname'
+                  className='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                  placeholder='Toro'
+                ></input>
+              </div>
+              <div>
+                <label className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
+                  Last name
+                </label>
+                <input
+                  type='lname'
+                  name='lname'
+                  id='lname'
+                  className='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                  placeholder='Ma'
+                ></input>
+              </div>
               <div>
                 <label className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
                   Your email
