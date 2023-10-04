@@ -1,13 +1,24 @@
 "use client";
-
-import { useState, useEffect } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 export default function Register() {
   const router = useRouter();
+  const [register, setRegister] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
 
-  let handleLogin = (e) => {
+  let handleRegister = (e: ChangeEvent<HTMLInputElement>) => {
+    setRegister({ ...register, [e.target.name]: e.target.value });
+  };
+  useEffect(() => {
+    console.log(`register is equal to ${JSON.stringify(register)}`);
+  }, [register]);
+  let handleLogin = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     router.push("/Login_Page");
   };
@@ -39,10 +50,12 @@ export default function Register() {
                 </label>
                 <input
                   type='fname'
-                  name='fname'
+                  name='firstName'
                   id='fname'
                   className='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-                  placeholder='Toro'
+                  placeholder='First Name'
+                  value={register.firstName}
+                  onChange={handleRegister}
                 ></input>
               </div>
               <div>
@@ -51,10 +64,11 @@ export default function Register() {
                 </label>
                 <input
                   type='lname'
-                  name='lname'
+                  name='lastName'
                   id='lname'
                   className='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-                  placeholder='Ma'
+                  placeholder='Last Name'
+                  onChange={handleRegister}
                 ></input>
               </div>
               <div>
@@ -67,6 +81,7 @@ export default function Register() {
                   id='email'
                   className='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                   placeholder='name@email.com'
+                  onChange={handleRegister}
                 ></input>
               </div>
               <div>
@@ -79,6 +94,7 @@ export default function Register() {
                   id='password'
                   className='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                   placeholder='••••••••'
+                  onChange={handleRegister}
                 ></input>
               </div>
               <div>
