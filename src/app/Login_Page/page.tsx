@@ -3,6 +3,13 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import {
+  hashPass,
+  comparePass,
+  createLogin,
+} from "../../../database/controllers/loginController";
+import { log } from "console";
+import { create } from "domain";
 
 export default function Login() {
   const router = useRouter();
@@ -17,10 +24,15 @@ export default function Login() {
     setLogin({ ...loginData, [e.target.name]: e.target.value });
   };
 
-  let handleLogin = (e: ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    console.log(`handling login!`);
-    router.push("/");
+  let handleLogin = async (e: ChangeEvent<HTMLInputElement>) => {
+    try {
+      e.preventDefault();
+      await createLogin(loginData);
+      //router.push("/");
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
   };
 
   let handleRegister = (e: ChangeEvent<HTMLInputElement>) => {
