@@ -1,6 +1,8 @@
-'use client';
+"use client";
 
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from "react";
+import RecipeCard from "../Recipe_Card/[slug]/page";
+import Link from "next/link";
 
 type Recipe = {
   _id: number;
@@ -16,10 +18,11 @@ export default function RecipeList() {
     try {
       setIsLoading(true);
       const response = await (
-        await fetch(process.env.URL + '/api/recipes')
+        await fetch(process.env.URL + "/api/recipes")
       ).json();
       const { recipes } = response;
       setRecipes(recipes);
+      console.log(JSON.stringify(recipes[0]["Ingredients"]));
     } catch (error) {
       console.error(error);
     } finally {
@@ -52,7 +55,17 @@ export default function RecipeList() {
               className='flex flex-col bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7] dark:text-gray-400'
               key={item._id}
             >
-              {item.Title}
+              <Link
+                href={{
+                  pathname: `/Recipe_Card/${item._id}`,
+                  query: { i: item.Ingredients[0] },
+                }}
+              >
+                {item.Title}
+              </Link>
+              {/* {Object.keys(item.Ingredients[0]).map((keyName, i) => (
+                <div>{keyName}</div>
+              ))} */}
             </div>
           ))}
         </>
