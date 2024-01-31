@@ -58,7 +58,7 @@ export default function RecipeList() {
               <Link
                 href={{
                   pathname: `/Recipe_Card/${item._id}`,
-                  query: { i: item.Ingredients[0] },
+                  query: { ingredients: JSON.stringify(item.Ingredients[0]) },
                 }}
               >
                 {item.Title}
@@ -66,6 +66,7 @@ export default function RecipeList() {
               {/* {Object.keys(item.Ingredients[0]).map((keyName, i) => (
                 <div>{keyName}</div>
               ))} */}
+              <div>{JSON.stringify(item.Ingredients[0])}</div>
             </div>
           ))}
         </>
