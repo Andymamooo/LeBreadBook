@@ -1,12 +1,12 @@
-import '@testing-library/jest-dom';
-import { act, render, screen } from '@testing-library/react';
-import RecipeList from './page';
+import "@testing-library/jest-dom";
+import { act, render, screen } from "@testing-library/react";
+import RecipeList from "./page";
 
-describe('Recipe List', () => {
+describe("Recipe List", () => {
   const mockRecipes = {
     recipes: [
-      { _id: 1, Title: 'Mock Bread 1' },
-      { _id: 2, Title: 'Mock Bread 2' },
+      { _id: 1, Title: "Mock Bread 1" },
+      { _id: 2, Title: "Mock Bread 2" },
     ],
   };
 
@@ -22,10 +22,10 @@ describe('Recipe List', () => {
     jest.restoreAllMocks();
   });
 
-  it('renders a Recipe List', async () => {
+  it("renders a Recipe List", async () => {
     await act(async () => render(<RecipeList />));
     expect(global.fetch).toHaveBeenCalledTimes(1);
-    expect(screen.getByText('Mock Bread 1')).toBeInTheDocument();
-    expect(screen.getByText('Mock Bread 2')).toBeInTheDocument();
+    expect(screen.getByText("Mock Bread 1")).toBeInTheDocument();
+    expect(screen.getByText("Mock Bread 2")).toBeInTheDocument();
   });
 });
