@@ -32,10 +32,10 @@ export default function RootLayout({
               Le Bread Book
             </span>
           </div>
-          <div class='block lg:hidden'>
-            <button class='flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white'>
+          <div className='block lg:hidden'>
+            <button className='flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white'>
               <svg
-                class='fill-current h-3 w-3'
+                className='fill-current h-3 w-3'
                 viewBox='0 0 20 20'
                 xmlns='http://www.w3.org/2000/svg'
               >
@@ -44,15 +44,15 @@ export default function RootLayout({
               </svg>
             </button>
           </div>
-          <div class='w-full block flex-grow lg:flex lg:items-center lg:w-auto'>
-            <div class='text-sm lg:flex-grow'>
-              <a class='block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4'>
+          <div className='w-full block flex-grow lg:flex lg:items-center lg:w-auto'>
+            <div className='text-sm lg:flex-grow'>
+              <a className='block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4'>
                 Recipes
               </a>
-              <a class='block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4'>
+              <a className='block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4'>
                 Account
               </a>
-              <a class='block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white'>
+              <a className='block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white'>
                 Toro
               </a>
             </div>
