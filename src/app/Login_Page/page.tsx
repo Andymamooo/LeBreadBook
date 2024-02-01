@@ -1,15 +1,8 @@
 "use client";
 
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import {
-  hashPass,
-  comparePass,
-  createLogin,
-} from "../../../database/controllers/loginController";
-import { log } from "console";
-import { create } from "domain";
 
 export default function Login() {
   const router = useRouter();
@@ -18,24 +11,19 @@ export default function Login() {
     password: "",
   });
 
-  let onLoginChange = (e: ChangeEvent<HTMLInputElement>) => {
+  let onLoginChange = (e) => {
     e.preventDefault();
     console.log(e.target.name);
     setLogin({ ...loginData, [e.target.name]: e.target.value });
   };
 
-  let handleLogin = async (e: ChangeEvent<HTMLInputElement>) => {
-    try {
-      e.preventDefault();
-      await createLogin(loginData);
-      //router.push("/");
-    } catch (error) {
-      console.error(error);
-      throw error;
-    }
+  let handleLogin = (e) => {
+    e.preventDefault();
+    console.log(`handling login!`);
+    router.push("/");
   };
 
-  let handleRegister = (e: ChangeEvent<HTMLInputElement>) => {
+  let handleRegister = (e) => {
     e.preventDefault();
     router.push("/Register_Page");
   };
@@ -88,7 +76,6 @@ export default function Login() {
               <button
                 type='submit'
                 className='w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800'
-                onClick={handleLogin}
               >
                 Login
               </button>
