@@ -13,6 +13,7 @@ export default function RecipeCard() {
     if (encodedIngredients) {
       try {
         const parsedIngredients = JSON.parse(encodedIngredients);
+        console.log(JSON.stringify(parsedIngredients));
         setIngredients(parsedIngredients);
         setIsLoading(false);
       } catch (error) {
@@ -33,7 +34,9 @@ export default function RecipeCard() {
       ) : (
         <div className='flex flex-col'>
           {Object.keys(ingredients).map((item, i) => (
-            <div>{item}</div>
+            <div>
+              {item}, {ingredients[item]}
+            </div>
           ))}
         </div>
       )}
