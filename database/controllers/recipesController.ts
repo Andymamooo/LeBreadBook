@@ -23,6 +23,10 @@ export const getRecipes = async (): Promise<WithId<Document>[]> => {
 
 export const updateRecipe = async (recipeId) => {
   try {
+    const db = await getClient();
+    const query = { _id: recipeId };
+    let recipes = await db.collection("recipes").findOne(query);
+    console.log(recipes);
   } catch (error) {
     console.error(error);
   }

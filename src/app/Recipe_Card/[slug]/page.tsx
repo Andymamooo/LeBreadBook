@@ -8,16 +8,25 @@ export default function RecipeCard() {
   const searchParams = useSearchParams();
   const [ingredients, setIngredients] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [id, setID] = useState(null);
   useEffect(() => {
     const encodedIngredients = searchParams.get("ingredients");
+    const encodedID = searchParams.get("id");
     if (encodedIngredients) {
       try {
         const parsedIngredients = JSON.parse(encodedIngredients);
-        console.log(JSON.stringify(parsedIngredients));
         setIngredients(parsedIngredients);
         setIsLoading(false);
       } catch (error) {
         console.error("Error while getting Ingredients", error);
+      }
+    }
+    if (encodedID) {
+      try {
+        const parsedID = JSON.parse(encodedID);
+        setID(parsedID);
+      } catch (error) {
+        console.error("Error while getting ID", error);
       }
     }
   }, [searchParams]);

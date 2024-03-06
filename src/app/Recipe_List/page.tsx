@@ -21,8 +21,8 @@ export default function RecipeList() {
         await fetch(process.env.URL + "/api/recipes")
       ).json();
       const { recipes } = response;
+      const temp_id = response["recipes"][0]["_id"];
       setRecipes(recipes);
-      console.log(JSON.stringify(recipes[0]["Ingredients"]));
     } catch (error) {
       console.error(error);
     } finally {
@@ -58,7 +58,10 @@ export default function RecipeList() {
               <Link
                 href={{
                   pathname: `/Recipe_Card/${item._id}`,
-                  query: { ingredients: JSON.stringify(item.Ingredients[0]) },
+                  query: {
+                    ingredients: JSON.stringify(item.Ingredients[0]),
+                    id: JSON.stringify(item._id),
+                  },
                 }}
               >
                 {item.Title}
