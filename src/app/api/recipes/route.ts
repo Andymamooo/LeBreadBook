@@ -20,8 +20,10 @@ export async function GET(Request: any) {
 
 export async function PATCH(Request: any) {
   try {
-    console.log(`PATCH request is equal to ${Request}`);
+    const data = await Request.json();
+    console.log(`PATCH request is equal to ${data}`);
     // let res = await updateRecipe(Request)
+    return NextResponse.json("test");
   } catch (error) {
     console.error(error);
     return new Response(null, {

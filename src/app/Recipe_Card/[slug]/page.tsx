@@ -9,12 +9,31 @@ export default function RecipeCard() {
   const [ingredients, setIngredients] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [id, setID] = useState(null);
+
+  async function handleTest(e) {
+    try {
+      e.preventDefault();
+      console.log("handling test!");
+      const response = await fetch(process.env.URL + "/api/recipes", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(id),
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
   useEffect(() => {
     const encodedIngredients = searchParams.get("ingredients");
     const encodedID = searchParams.get("id");
     if (encodedIngredients) {
       try {
         const parsedIngredients = JSON.parse(encodedIngredients);
+        console.log(
+          `parsedIngredients is equal to ${JSON.stringify(parsedIngredients)}`
+        );
         setIngredients(parsedIngredients);
         setIsLoading(false);
       } catch (error) {
@@ -42,6 +61,7 @@ export default function RecipeCard() {
         </div>
       ) : (
         <div className='flex flex-col'>
+          <button onClick={handleTest}>EDIT</button>
           {Object.keys(ingredients).map((item, i) => (
             <div>
               {item}, {ingredients[item]}
