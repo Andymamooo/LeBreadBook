@@ -60,11 +60,14 @@ export default function RecipeCard() {
           <span className='sr-only'>Loading...</span>
         </div>
       ) : (
-        <div className='flex flex-col'>
+        <div className='flex flex-col items-center space-y-4 p-4 justify-center h-screen'>
           <button onClick={handleTest}>EDIT</button>
           {Object.keys(ingredients).map((item, i) => (
-            <div>
-              {item}, {ingredients[item]}
+            <div
+              className='flex items-center '
+              key={`${id}+${ingredients[item]}`}
+            >
+              {item}, <input value={ingredients[item] || ""} />
             </div>
           ))}
         </div>
