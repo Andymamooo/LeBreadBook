@@ -64,10 +64,11 @@ export default function RecipeCard() {
           <button onClick={handleTest}>EDIT</button>
           {Object.keys(ingredients).map((item, i) => (
             <div
-              className='flex items-center '
+              className='flex items-center space-x-4 '
               key={`${id}+${ingredients[item]}`}
             >
-              {item}, <input value={ingredients[item] || ""} />
+              <span className='w-32'>{item}</span>:
+              <input value={ingredients[item] || ""} />
             </div>
           ))}
         </div>
