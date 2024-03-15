@@ -9,6 +9,7 @@ export default function RecipeCard() {
   const [ingredients, setIngredients] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [id, setID] = useState(null);
+  const [totalWeight, setWeight] = useState(0);
 
   async function handleTest(e) {
     try {
@@ -25,6 +26,26 @@ export default function RecipeCard() {
       console.error(error);
     }
   }
+
+  const renderIngredients = (ingredients) => {
+    return Object.keys(ingredients).map((item, i) => {
+      const value = ingredients[item];
+      return (
+        <div className='flex items-center space-x-4' key={`${item}_${i}`}>
+          <span className='w-32'>{item}</span>:
+          {typeof value === "object" ? (
+            renderIngredients(value) // Recursively render nested ingredients
+          ) : (
+            <input
+              type='number'
+              value={value}
+              onChange={(e) => handleInputChange(e, item)}
+            />
+          )}
+        </div>
+      );
+    });
+  };
   useEffect(() => {
     const encodedIngredients = searchParams.get("ingredients");
     const encodedID = searchParams.get("id");
@@ -62,15 +83,7 @@ export default function RecipeCard() {
       ) : (
         <div className='flex flex-col items-center space-y-4 p-4 justify-center h-screen'>
           <button onClick={handleTest}>EDIT</button>
-          {Object.keys(ingredients).map((item, i) => (
-            <div
-              className='flex items-center space-x-4 '
-              key={`${id}+${ingredients[item]}`}
-            >
-              <span className='w-32'>{item}</span>:
-              <input value={ingredients[item] || ""} />
-            </div>
-          ))}
+          {renderIngredients(ingredients)}
         </div>
       )}
     </Fragment>
