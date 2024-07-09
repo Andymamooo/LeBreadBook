@@ -27,6 +27,23 @@ export default function RecipeCard() {
     }
   }
 
+  async function handleInputChange(e) {
+    try {
+      e.preventDefault();
+      console.log("you are changing recipe! ");
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async function blockInvalidNumbers(e) {
+    try {
+      return ["e", "E", "+", "-"].includes(e.key) && e.preventDefault();
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   const renderIngredients = (ingredients) => {
     return Object.keys(ingredients).map((item, i) => {
       const value = ingredients[item];
@@ -34,11 +51,15 @@ export default function RecipeCard() {
         <div className='flex items-center space-x-4' key={`${item}_${i}`}>
           <span className='w-32'>{item}</span>:
           {typeof value === "object" ? (
-            renderIngredients(value) // Recursively render nested ingredients
+            <div>
+              <div className='font-semibold'>{item}</div>
+              {renderIngredients(value)}
+            </div>
           ) : (
             <input
+              defaultValue={value}
               type='number'
-              value={value}
+              onKeyDown={blockInvalidNumbers}
               onChange={(e) => handleInputChange(e, item)}
             />
           )}
@@ -52,9 +73,6 @@ export default function RecipeCard() {
     if (encodedIngredients) {
       try {
         const parsedIngredients = JSON.parse(encodedIngredients);
-        console.log(
-          `parsedIngredients is equal to ${JSON.stringify(parsedIngredients)}`
-        );
         setIngredients(parsedIngredients);
         setIsLoading(false);
       } catch (error) {
